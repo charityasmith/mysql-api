@@ -32,11 +32,11 @@ exports.getTask = function(req, res) {
 /**
  * POST request -
  * {
- *  name: 'A task name'
+ *  task_name: 'A task name'
  * }
  */
 exports.createTask = function(req, res) {
-  con.query(queries.INSERT_TASK, [req.body.name], function(err, result) {
+  con.query(queries.INSERT_TASK, [req.body.task_name], function(err, result) {
     if (err) {
       res.send(err);
     }
@@ -49,14 +49,14 @@ exports.createTask = function(req, res) {
 /**
  * PUT request -
  * {
- *  name: 'A task name',
+ *  task_name: 'A task name',
  *  state: 'completed'
  * }
  */
 exports.updateTask = function(req, res) {
   con.query(
     queries.UPDATE_TASK,
-    [req.body.name, req.body.status, req.params.taskId],
+    [req.body.task_name, req.body.status, req.params.taskId],
     function(err, data) {
       if (err) {
         res.send(err);

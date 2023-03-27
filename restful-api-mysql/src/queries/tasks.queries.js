@@ -4,7 +4,7 @@
  *
  * Create a table called `tasks` (case-insensitive), with
  * - id as an integer/number that can't have null values, auto-increment it
- * - name with a max of 255 characters, cannot have null values
+ * - task_name with a max of 255 characters, cannot have null values
  * - created_date set to date and time created
  * - status with a max of 10 characters, has a default of 'pending'
  *
@@ -15,7 +15,7 @@
  */
 exports.CREATE_TASKS_TABLE = `CREATE TABLE IF NOT EXISTS tasks(
   id int NOT NULL AUTO_INCREMENT,
-  name varchar(255) NOT NULL,
+  task_name varchar(255) NOT NULL,
   created_date DATETIME DEFAULT CURRENT_TIMESTAMP(),
   status varchar(10) DEFAULT 'pending',
   PRIMARY KEY (id)
@@ -36,7 +36,7 @@ exports.SINGLE_TASKS = `SELECT * FROM tasks WHERE id = ?`;
  * - column names match the order the are in the table
  * - `?` allow us to use params in our controllers
  */
-exports.INSERT_TASK = `INSERT INTO tasks (name) VALUES (?)`;
+exports.INSERT_TASK = `INSERT INTO tasks (task_name) VALUES (?)`;
 
 /**
  * Update follows syntax:
@@ -44,7 +44,7 @@ exports.INSERT_TASK = `INSERT INTO tasks (name) VALUES (?)`;
  *
  * NOTE: omitting `WHERE` will result in updating every existing entry.
  */
-exports.UPDATE_TASK = `UPDATE tasks SET name = ?, status = ? WHERE id = ?`;
+exports.UPDATE_TASK = `UPDATE tasks SET task_name = ?, status = ? WHERE id = ?`;
 
 // Delete a task by id
 exports.DELETE_TASK = `DELETE FROM tasks WHERE id = ?`;
